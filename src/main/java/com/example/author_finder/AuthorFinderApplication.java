@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class AuthorFinderApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(AuthorFinderApplication.class, args);
-	}
+  public static void main(String[] args) {
+    SpringApplication.run(AuthorFinderApplication.class, args);
+  }
 
 }
