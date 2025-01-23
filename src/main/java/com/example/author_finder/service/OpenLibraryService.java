@@ -18,9 +18,8 @@ public class OpenLibraryService {
   private final AuthorRepository authorRepository;
   private final WorkRepository workRepository;
 
-  public OpenLibraryService(RestTemplate restTemplate, AuthorRepository authorRepository,
-                            WorkRepository workRepository) {
-    this.restTemplate = restTemplate;
+  public OpenLibraryService(AuthorRepository authorRepository, WorkRepository workRepository) {
+    this.restTemplate = new RestTemplate();
     this.authorRepository = authorRepository;
     this.workRepository = workRepository;
   }
