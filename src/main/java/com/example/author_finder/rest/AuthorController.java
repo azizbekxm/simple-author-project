@@ -1,7 +1,7 @@
 package com.example.author_finder.rest;
 
-import com.example.author_finder.model.Author;
-import com.example.author_finder.model.Work;
+import com.example.author_finder.domain.dto.AuthorDto;
+import com.example.author_finder.domain.dto.AuthorWorkDto;
 import com.example.author_finder.service.AuthorService;
 import java.util.List;
 import org.springframework.http.ResponseEntity;
@@ -21,12 +21,12 @@ public class AuthorController {
   }
 
   @GetMapping("/search")
-  public ResponseEntity<List<Author>> searchAuthors(@RequestParam String name) {
+  public ResponseEntity<List<AuthorDto>> searchAuthors(@RequestParam String name) {
     return ResponseEntity.ok(authorService.searchAuthors(name));
   }
 
   @GetMapping("/{authorId}/works")
-  public ResponseEntity<List<Work>> getAuthorWorks(@PathVariable String authorId){
+  public ResponseEntity<List<AuthorWorkDto>> getAuthorWorks(@PathVariable String authorId) {
     return ResponseEntity.ok(authorService.getAuthorWorksById(authorId));
   }
 }
