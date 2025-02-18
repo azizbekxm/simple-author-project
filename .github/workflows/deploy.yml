@@ -37,8 +37,8 @@ jobs:
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          region: us-east-1
-          application_name: "Author-finder"
+          region: eu-north-1
+          application_name: "author-finder"
           environment_name: "Author-finder-env"
           version_label: ${{ github.sha }}
           deployment_package: target/author-finder-0.0.1-SNAPSHOT.jar
