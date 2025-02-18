@@ -35,8 +35,8 @@ jobs:
       - name: Deploy to Elastic Beanstalk (JAR)
         uses: einaregilsson/beanstalk-deploy@v17
         with:
-          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           region: us-east-1
           application_name: "auther-finder"
           environment_name: "Auther-finder-env"
