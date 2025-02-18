@@ -1,0 +1,44 @@
+name: Deploy to AWS Elastic Beanstalk
+
+on:
+  push:
+    branches:
+      - dev-imp
+
+env:
+  AWS_REGION: us-east-1
+  EB_APPLICATION_NAME: author-finder
+  EB_ENVIRONMENT_NAME: Author-finder-env
+  JAR_PATH: target/author-finder.jar
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: "17"
+          distribution: "temurin"
+
+      - name: Build with Maven
+        run: mvn clean package -DskipTests
+
+      - name: Deploy to Elastic Beanstalk (JAR)
+        uses: einaregilsson/beanstalk-deploy@v17
+        with:
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: ${{ env.AWS_REGION }}
+          application_name: "auther-finder"
+          environment_name: "Auther-finder-env"
+          version_label: ${{ github.sha }}
+          deployment_package: target/author-finder.jar
